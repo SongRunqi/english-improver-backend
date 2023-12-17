@@ -2,6 +2,7 @@ package com.ei.mapper;
 
 import com.ei.entities.Words;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -10,6 +11,7 @@ import java.util.List;
  * @date 2023/12/16
  */
 @Mapper
+@Repository
 public interface WordsMapper {
 
     /**

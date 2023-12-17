@@ -2,6 +2,7 @@ package com.ei.mapper;
 
 import com.ei.entities.Sentences;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -10,6 +11,7 @@ import java.util.List;
  * @date 2023/12/16
  */
 @Mapper
+@Repository
 public interface SentencesMapper {
     /**
      * 根据用户和句子id查找句子
@@ -31,5 +33,5 @@ public interface SentencesMapper {
      * @param sentences 句子
      * @return 是否插入成功
      */
-    boolean insertSentences(Sentences sentences);
+    Integer insertSentences(Sentences sentences);
 }

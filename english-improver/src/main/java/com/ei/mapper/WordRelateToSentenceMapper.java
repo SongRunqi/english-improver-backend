@@ -1,12 +1,15 @@
 package com.ei.mapper;
 
+import com.ei.entities.WordRelateToSentence;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 /**
  * @author 86157
  * @date 2023/12/16
  */
 @Mapper
+@Repository
 public interface WordRelateToSentenceMapper {
 
     /**
@@ -24,4 +27,11 @@ public interface WordRelateToSentenceMapper {
      * @return 单词id
      */
     Integer[] getWordIdByUserIdAndSentenceId(Integer userId, Integer sentenceId);
+
+    /**
+     * 根据单词句子关联插入记录
+     * @param wordRelateToSentence 单词句子关联
+     * @return 是否插入成功
+     */
+    Integer insertWordRelateToSentence(WordRelateToSentence wordRelateToSentence);
 }

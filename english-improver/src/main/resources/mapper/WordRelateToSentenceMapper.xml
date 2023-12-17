@@ -9,4 +9,7 @@
     <select id="getWordIdByUserIdAndSentenceId" resultType="WordRelateToSentence">
         select wordId from word_sentence where userId = #{userId} and sentenceId = #{sentenceId}
     </select>
+    <insert id="insertWordRelateToSentence" parameterType="WordRelateToSentence">
+        insert into word_sentence (userId, wordId, propertyId, tenseId, sentenceId) values (#{userId}, #{wordId}, #{propertyId}, #{tenseId}, #{sentenceId})
+    </insert>
 </mapper>
