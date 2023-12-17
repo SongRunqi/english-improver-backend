@@ -13,9 +13,9 @@ public class Sentences implements java.io.Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
     private Integer id;
-    private String use_id;
+    private String userId;
     private String sentence;
-    private String created_at;
+    private String createdDate;
     private String translation;
     private String grammar;
 }

@@ -13,6 +13,6 @@ public class ImproverUsers implements java.io.Serializable {
     private Integer id;
     private String username;
     private transient String password;
-    private String created_at;
+    private String createdDate;
 
 }
