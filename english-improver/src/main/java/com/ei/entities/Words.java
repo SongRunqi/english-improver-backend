@@ -14,12 +14,11 @@ public class Words implements java.io.Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
     private Integer id;
-    private Date created_at;
+    private Date createdDate;
     private Integer userId;
     private String word;//单词
     private String pronunciation;//音标
     private Integer propertyId;//词性
     private String means;//词义
-    private String sentenceIds;//例句
     private Integer tense;//时态
 }
