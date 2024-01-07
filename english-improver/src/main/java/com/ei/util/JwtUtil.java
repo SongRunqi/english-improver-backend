@@ -4,7 +4,6 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.ei.entities.ImproverUsers;
 
 import java.util.Date;
 
@@ -14,22 +13,22 @@ import java.util.Date;
  */
 
 public class JwtUtil {
-    private final String secret = "english-improver"; // 使用随机秘钥
+    private static final String secret = "english-improver"; // 使用随机秘钥
 
     /**
      * 生成jwt token
-     * @param user 用户
+     * @param
      * @return token
      */
-    public String generateToken(ImproverUsers user) {
+    public static String generateToken() {
         long nowMills = System.currentTimeMillis();
         Date now = new Date(nowMills);
         // 过期时间
         long expire = 3600L;
         Date expireDate = new Date(nowMills + expire * 1000);
         return JWT.create()
-                .withClaim("username", user.getUsername())
-                .withClaim("id", user.getId())
+                .withClaim("username", "user.getUsername()")
+                .withClaim("id", "user.getId()")
                 .withIssuedAt(now)
                 .withExpiresAt(expireDate)
                 .sign(com.auth0.jwt.algorithms.Algorithm.HMAC256(secret));
@@ -40,7 +39,7 @@ public class JwtUtil {
      * @param token token
      * @return 用户id
      */
-    public String getUserIdFromToken(String token) {
+    public static String getUserIdFromToken(String token) {
         return JWT.decode(token).getClaim("id").asString();
     }
     /**
@@ -48,7 +47,7 @@ public class JwtUtil {
      * @param jwt jwt
      * @return 是否已经失效
      */
-    private boolean isTokenExpired(DecodedJWT jwt) {
+    private static boolean isTokenExpired(DecodedJWT jwt) {
         return jwt.getExpiresAt().before(new Date());
     }
     /**
@@ -56,7 +55,7 @@ public class JwtUtil {
      * @param token token
      * @return 是否正确
      */
-    public boolean validateToken(String token) {
+    public static boolean validateToken(String token) {
         Algorithm algorithm = Algorithm.HMAC256(secret); // 使用相同的密钥
         JWTVerifier verifier = JWT.require(algorithm)
                 .withIssuer("auth0")

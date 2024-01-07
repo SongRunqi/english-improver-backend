@@ -12,8 +12,15 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  */
 
 public class EIExceptionHandler {
-
-    public Result handleException(Exception e) {
-        return Result.fail(e.getMessage());
+    @ControllerAdvice
+    public class GlobalExceptionHandler {
+        @ExceptionHandler(Exception.class)
+        @ResponseBody
+        @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+        public Result handleException(Exception e) {
+            System.out.println(e.getMessage());
+            return Result.fail(e.getMessage());
+        }
     }
+
 }
